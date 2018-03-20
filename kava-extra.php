@@ -74,10 +74,10 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 			add_action( 'init', array( $this, 'init' ), -999 );
 
 			// Load the CX Loader.
-			add_action( 'after_setup_theme', array( $this, 'kava_extra_framework_loader' ), -20 );
+			add_action( 'after_setup_theme', array( $this, 'framework_loader' ), -20 );
 
 			// Load the plugin modules.
-			add_action( 'after_setup_theme', array( $this, 'kava_extra_framework_modules' ), 0 );
+			add_action( 'after_setup_theme', array( $this, 'framework_modules' ), 0 );
 
 			// Register activation and deactivation hook.
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
@@ -96,8 +96,10 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 			}
 
 			require $this->plugin_path( 'includes/assets.php' );
+			require $this->plugin_path( 'includes/post-format.php' );
 
 			kava_extra_assets()->init();
+			kava_extra_post_format()->init();
 
 			do_action( 'kava-extra/init', $this );
 
@@ -108,7 +110,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 *
 		 * @return [type] [description]
 		 */
-		public function kava_extra_framework_modules() {
+		public function framework_modules() {
 
 			require $this->plugin_path( 'includes/post-meta.php' );
 
@@ -123,7 +125,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 *
 		 * @since  1.0.0
 		 */
-		public function kava_extra_framework_loader() {
+		public function framework_loader() {
 			require $this->plugin_path( 'framework/loader.php' );
 
 			new Kava_Extra_CX_Loader(
@@ -195,7 +197,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 * @return void
 		 */
 		public function lang() {
-			load_plugin_textdomain( 'jet-parallax', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+			load_plugin_textdomain( 'kava-extra', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
