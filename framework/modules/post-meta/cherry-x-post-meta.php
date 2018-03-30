@@ -90,6 +90,7 @@ if ( ! class_exists( 'Cherry_X_Post_Meta' ) ) {
 		 * @return [type] [description]
 		 */
 		public function init_builder( $hook ) {
+			global $post;
 
 			if ( ! in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) {
 				return;
@@ -106,6 +107,8 @@ if ( ! class_exists( 'Cherry_X_Post_Meta' ) ) {
 			}
 
 			$this->builder = call_user_func( $this->args['builder_cb'] );
+
+			$this->get_fields( $post );
 
 		}
 
@@ -280,7 +283,7 @@ if ( ! class_exists( 'Cherry_X_Post_Meta' ) ) {
 			 */
 			do_action( 'cx_post_meta/meta_box/before' );
 
-			$this->get_fields( $post );
+			$this->builder->render();
 
 			/**
 			 * Hook fires after metabox output finished.
@@ -353,8 +356,6 @@ if ( ! class_exists( 'Cherry_X_Post_Meta' ) ) {
 					call_user_func( array( $this->builder, $register_callback ), $field );
 				}
 			}
-
-			$this->builder->render();
 		}
 
 		/**

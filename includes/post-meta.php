@@ -170,7 +170,7 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 						'multi_upload'       => false,
 						'upload_button_text' => esc_html__( 'Set Video', 'kava-extra' ),
 						'conditions'         => array(
-							'video_type' => 'library',
+							'kava_extra_video_type' => 'library',
 						),
 					),
 					'kava_extra_video_external' => array(
@@ -179,7 +179,7 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 						'title'       => esc_html__( 'External Video URL', 'kava-extra' ),
 						'description' => esc_html__( 'Enter a URL that is compatible with WP built-in oEmbed feature. This setting is used for your video post formats.', 'kava-extra' ),
 						'conditions'  => array(
-							'video_type' => 'external',
+							'kava_extra_video_type' => 'external',
 						),
 					),
 					'kava_extra_video_poster' => array(
@@ -222,6 +222,9 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 						'title'       => esc_html__( 'Autoplay', 'kava-extra' ),
 						'description' => esc_html__( 'Causes the media to automatically play as soon as the media file is ready.', 'kava-extra' ),
 						'value'       => false,
+						'conditions'  => array(
+							'kava_extra_video_loop' => 'true',
+						),
 					),
 					'kava_extra_video_preload' => array(
 						'type'        => 'switcher',
