@@ -88,7 +88,7 @@ if ( ! class_exists( 'CX_Control_Repeater' ) ) {
 		 * @return array
 		 */
 		public function get_script_depends() {
-			return array( 'jquery-ui-sortable' );
+			return array( 'jquery-ui-sortable', 'wp-util' );
 		}
 
 		/**
@@ -111,7 +111,7 @@ if ( ! class_exists( 'CX_Control_Repeater' ) ) {
 		public function render() {
 
 			$html        = '';
-			$class       = $this->settings['class'] . ' ' . $this->settings['master'];
+			$class       = $this->settings['class'];
 			$ui_kit      = ! empty( $this->settings['ui_kit'] ) ? 'cx-ui-kit' : '';
 			$value       = ! empty( $this->settings['value'] ) ? count( $this->settings['value'] ) : 0 ;
 			$title_field = ! empty( $this->settings['title_field'] ) ? 'data-title-field="' . $this->settings['title_field'] . '"' : '' ;

@@ -31,7 +31,26 @@ if ( ! class_exists( 'Kava_Extra_Assets' ) ) {
 		 * Constructor for the class
 		 */
 		public function init() {
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ) );
+		}
 
+		/**
+		 * Enqueue admin styles
+		 *
+		 * @return void
+		 */
+		public function admin_enqueue_styles() {
+			$screen = get_current_screen();
+
+			// Jet setting page check
+			if ( 'elementor_page_kava-theme-settings' === $screen->base ) {}
+
+			wp_enqueue_style(
+				'kava-theme-admin-css',
+				kava_extra()->plugin_url( 'assets/css/kava-extra-admin.css' ),
+				false,
+				kava_extra()->get_version()
+			);
 		}
 
 		/**

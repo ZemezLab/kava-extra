@@ -60,6 +60,13 @@ if ( ! class_exists( 'Kava_Extra_CX_Loader' ) ) {
 		private $modules_slugs = array();
 
 		/**
+		 * Included modules paths and URLs
+		 *
+		 * @var array
+		 */
+		private $included_modules = array();
+
+		/**
 		 * Loads latest versions of all modules passed into modules array
 		 *
 		 * @param array $modules List of loaded modules. Format:
@@ -110,12 +117,39 @@ if ( ! class_exists( 'Kava_Extra_CX_Loader' ) ) {
 				$path = $this->get_latest_version_path( $modules_data[ $slug ] );
 
 				if ( file_exists( $path ) ) {
+
+					$dir = pathinfo( $path, PATHINFO_DIRNAME );
+
+					$this->included_modules[ $slug ] = array(
+						'path' => trailingslashit( $dir ),
+						'url'  => trailingslashit(
+							str_replace(
+								'\\',
+								'/',
+								str_replace( untrailingslashit( ABSPATH ), esc_url( home_url() ), $dir )
+							)
+						),
+					);
+
 					require_once $path;
+
 				}
 
 			}
 
 			return true;
+
+		}
+
+		/**
+		 * Retireve path and URL of included module directory
+		 *
+		 * @param  [type] $file [description]
+		 * @return [type]       [description]
+		 */
+		public function get_included_module_data( $file ) {
+
+			return isset( $this->included_modules[ $file ] ) ? $this->included_modules[ $file ] : false;
 
 		}
 

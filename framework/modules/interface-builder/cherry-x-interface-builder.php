@@ -2,7 +2,7 @@
 /**
  * Interface Builder module
  *
- * Version: 1.0.0
+ * Version: 1.0.1
  */
 
 // If this file is called directly, abort.
@@ -42,7 +42,7 @@ if ( ! class_exists( 'CX_Interface_Builder' ) ) {
 		 *
 		 * @var string
 		 */
-		protected $version = '1.0.0';
+		protected $version = '1.0.1';
 
 		/**
 		 * Conditions

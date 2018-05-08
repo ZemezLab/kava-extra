@@ -722,6 +722,7 @@
 				},
 
 				switchLinked: function( event ) {
+					console.log('test');
 
 					var self       = event.data.self,
 						$this      = $( this ),
@@ -912,6 +913,9 @@
 						$this       = $( this ),
 						value,
 						parentItem;
+
+					console.log(titleFilds);
+					console.log($this.closest( '.' + titleFilds + '-wrap' ));
 
 					if ( titleFilds && $this.closest( '.' + titleFilds + '-wrap' )[0] ) {
 						value       = $this.val(),

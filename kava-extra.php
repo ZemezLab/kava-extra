@@ -60,6 +60,15 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		private $plugin_path = null;
 
 		/**
+		 * Framework component
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @var    object
+		 */
+		public $framework;
+
+		/**
 		 * Sets up needed actions/filters for the plugin to initialize.
 		 *
 		 * @since 1.0.0
@@ -97,6 +106,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 
 			require $this->plugin_path( 'includes/assets.php' );
 			require $this->plugin_path( 'includes/post-format.php' );
+			require $this->plugin_path( 'includes/ext/elementor-plugin-ext.php' );
 
 			kava_extra_assets()->init();
 			kava_extra_post_format()->init();
@@ -113,6 +123,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		public function framework_modules() {
 
 			require $this->plugin_path( 'includes/post-meta.php' );
+			require $this->plugin_path( 'includes/settings.php' );
 
 			kava_extra_post_meta()->init();
 
@@ -128,7 +139,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		public function framework_loader() {
 			require $this->plugin_path( 'framework/loader.php' );
 
-			new Kava_Extra_CX_Loader(
+			$this->framework = new Kava_Extra_CX_Loader(
 				array(
 					$this->plugin_path( 'framework/modules/post-meta/cherry-x-post-meta.php' ),
 					$this->plugin_path( 'framework/modules/interface-builder/cherry-x-interface-builder.php' ),

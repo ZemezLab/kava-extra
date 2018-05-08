@@ -14,7 +14,7 @@ $border: 1px solid rgba(0, 0, 0, 0.1) ;
 
 $br-radius: 5px; // Border radius.
 
-$padding: 10px;
+$padding: 5px;
 $margin: 10px;
 $max-height: 700px;
 
@@ -392,7 +392,7 @@ label.cherry-label{
 					>.cx-tab__tabs{
 						flex-direction: row;
 						-webkit-box-flex: 0;
-						flex: 0 1 25%;
+						flex: 0 1 15%;
 						border-radius:$br-radius 0 0 $br-radius;
 						border-right: none;
 						.cx-component__button{
@@ -407,7 +407,7 @@ label.cherry-label{
 					}
 					>.cx-tab__content{
 						-webkit-box-flex: 0;
-						flex: 0 1 75%;
+						flex: 0 1 85%;
 						border-radius: 0 $br-radius $br-radius 0;
 					}
 				}
