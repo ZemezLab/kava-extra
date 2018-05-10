@@ -51,11 +51,24 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 		 */
 		public function init() {
 
+			if ( ! $this->is_enabled() ) {
+				return;
+			}
+
 			add_action( 'admin_enqueue_scripts', array( $this, 'init_interface_builder' ), 0 );
 
 			add_action( 'admin_menu', array( $this, 'register_page' ), 99 );
 			add_action( 'init', array( $this, 'save' ), 40 );
 			add_action( 'admin_notices', array( $this, 'saved_notice' ) );
+		}
+
+		/**
+		 * Is default settings page enabled or not.
+		 *
+		 * @return boolean
+		 */
+		public function is_enabled() {
+			return apply_filters( 'kava-extra/settings-page/is-enabled', true );
 		}
 
 		/**
@@ -85,6 +98,10 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 		 * @return bool
 		 */
 		public function saved_notice() {
+
+			if ( ! isset( $_REQUEST['page'] ) || $this->key !== $_REQUEST['page'] ) {
+				return false;
+			}
 
 			if ( ! isset( $_GET['settings-saved'] ) ) {
 				return false;
@@ -135,6 +152,20 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 
 			wp_redirect( $redirect );
 			die();
+
+		}
+
+		/**
+		 * Update single option key in options array
+		 *
+		 * @return void
+		 */
+		public function save_key( $key, $value ) {
+
+			$current         = get_option( $this->key, array() );
+			$current[ $key ] = $value;
+
+			update_option( $this->key, $current );
 
 		}
 
@@ -230,43 +261,7 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 				)
 			);
 
-			$this->interface_builder->register_component(
-				array(
-					'kava_extra_tab_vertical' => array(
-						'type'   => 'component-tab-vertical',
-						'parent' => 'settings_top',
-					),
-				)
-			);
-
-			$this->interface_builder->register_settings(
-				array(
-					'general_tab' => array(
-						'parent'      => 'kava_extra_tab_vertical',
-						'title'       => esc_html__( 'General', 'kava-extra' ),
-					),
-					/*'advanced_tab' => array(
-						'parent'      => 'kava_extra_tab_vertical',
-						'title'       => esc_html__( 'Advanced', 'kava-extra' ),
-					),*/
-				)
-			);
-
-			$controls = apply_filters( 'kava-extra/settings-page/controls-list',
-				array(
-					'nucleo-mini-package' => array(
-						'type'        => 'switcher',
-						'parent'      => 'general_tab',
-						'title'       => esc_html__( 'use nucleo-mini icon package', 'kava-extra' ),
-						'description' => esc_html__( 'Add nucleo-mini icon package to Elementor icon picker control', 'kava-extra' ),
-						'value'       => $this->get( 'nucleo-mini-package' ),
-						'toggle'      => array(
-							'true_toggle'  => 'On',
-							'false_toggle' => 'Off',
-						),
-					),
-				)
-			);
+			$controls = $this->get_controls_list( 'settings_top' );
 
 			$this->interface_builder->register_control( $controls );
 
@@ -284,6 +279,31 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 			echo '<div class="kava-extra-settings-page">';
 				$this->interface_builder->render();
 			echo '</div>';
+		}
+
+		/**
+		 * Returns parent-independent controls list
+		 *
+		 * @return void
+		 */
+		public function get_controls_list( $parent = 'settings_top' ) {
+
+			return apply_filters( 'kava-extra/settings-page/controls-list',
+				array(
+					'nucleo-mini-package' => array(
+						'type'        => 'switcher',
+						'parent'      => $parent,
+						'title'       => esc_html__( 'Use nucleo-mini icon package', 'kava-extra' ),
+						'description' => esc_html__( 'Add nucleo-mini icon package to Elementor icon picker control', 'kava-extra' ),
+						'value'       => $this->get( 'nucleo-mini-package' ),
+						'toggle'      => array(
+							'true_toggle'  => 'On',
+							'false_toggle' => 'Off',
+						),
+					),
+				)
+			);
+
 		}
 
 		/**
@@ -311,5 +331,3 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 function kava_extra_settings() {
 	return Kava_Extra_Settings::get_instance();
 }
-
-kava_extra_settings()->init();

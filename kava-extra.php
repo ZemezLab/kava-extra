@@ -78,9 +78,9 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		public function __construct() {
 
 			// Internationalize the text strings used.
-			add_action( 'init', array( $this, 'lang' ), -999 );
+			add_action( 'init', array( $this, 'lang' ), -10 );
 			// Load files.
-			add_action( 'init', array( $this, 'init' ), -999 );
+			add_action( 'init', array( $this, 'init' ), -10 );
 
 			// Load the CX Loader.
 			add_action( 'after_setup_theme', array( $this, 'framework_loader' ), -20 );
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		public function init() {
 
 			if ( ! $this->is_kava_theme() ) {
-				//return false;
+				return false;
 			}
 
 			require $this->plugin_path( 'includes/assets.php' );
@@ -110,6 +110,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 
 			kava_extra_assets()->init();
 			kava_extra_post_format()->init();
+			kava_extra_settings()->init();
 
 			do_action( 'kava-extra/init', $this );
 
@@ -162,13 +163,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 * @return boolean
 		 */
 		public function is_kava_theme() {
-			$theme = wp_get_theme();
-
-			if ( 'KavaTheme' == $theme->name || 'kava' == $theme->template ) {
-				return true;
-			}
-
-			return false;
+			return class_exists( 'Kava_Theme_Setup' );
 		}
 
 		/**
