@@ -235,6 +235,24 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 					),
 				),
 			) );
+
+			new Cherry_X_Post_Meta( array(
+				'id'            => 'kava-extra-page-settings',
+				'title'         => esc_html__( 'Page Settings', 'kava-extra' ),
+				'page'          => array( 'page', 'post' ),
+				'context'       => 'normal',
+				'priority'      => 'high',
+				'callback_args' => false,
+				'builder_cb'    => array( $this, 'kava_extra_get_interface_builder' ),
+				'fields'        => array(
+					'kava_extra_enable_breadcrumbs' => array(
+						'type'        => 'switcher',
+						'title'       => esc_html__( 'Use Breadcrumbs', 'kava-extra' ),
+						'description' => esc_html__( 'Breadcrumbs enable global settings redefining.', 'kava-extra' ),
+						'value'       => true,
+					),
+				),
+			) );
 		}
 
 		/**

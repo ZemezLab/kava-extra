@@ -106,14 +106,15 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 
 			require $this->plugin_path( 'includes/assets.php' );
 			require $this->plugin_path( 'includes/post-format.php' );
+			require $this->plugin_path( 'includes/functions.php' );
 			require $this->plugin_path( 'includes/ext/elementor-plugin-ext.php' );
 
 			kava_extra_assets()->init();
 			kava_extra_post_format()->init();
 			kava_extra_settings()->init();
+			kava_extra_functions()->init();
 
 			do_action( 'kava-extra/init', $this );
-
 		}
 
 		/**

@@ -392,7 +392,7 @@ label.cherry-label{
 					>.cx-tab__tabs{
 						flex-direction: row;
 						-webkit-box-flex: 0;
-						flex: 0 1 15%;
+						flex: 0 1 20%;
 						border-radius:$br-radius 0 0 $br-radius;
 						border-right: none;
 						.cx-component__button{
@@ -407,7 +407,7 @@ label.cherry-label{
 					}
 					>.cx-tab__content{
 						-webkit-box-flex: 0;
-						flex: 0 1 85%;
+						flex: 0 1 80%;
 						border-radius: 0 $br-radius $br-radius 0;
 					}
 				}

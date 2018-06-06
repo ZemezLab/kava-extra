@@ -57,6 +57,7 @@ if ( ! class_exists( 'CX_Control_Switcher' ) ) {
 				$html .= '<div class="cx-switcher-wrap">';
 					$html .= '<input type="radio" id="' . esc_attr( $this->settings['id'] ) . '-true" class="cx-input-switcher cx-input-switcher-true" name="' . esc_attr( $this->settings['name'] ) . '" ' . checked( true, $value, false ) . ' value="true">';
 					$html .= '<input type="radio" id="' . esc_attr( $this->settings['id'] ) . '-false" class="cx-input-switcher cx-input-switcher-false" name="' . esc_attr( $this->settings['name'] ) . '" ' . checked( false, $value, false ) . ' value="false">';
+					$html .= '<span class="bg-cover"></span>';
 					$html .= '<label class="sw-enable"><span>' . esc_html( $this->settings['toggle']['true_toggle'] ) . '</span></label>';
 					$html .= '<label class="sw-disable"><span>' . esc_html( $this->settings['toggle']['false_toggle'] ) . '</span></label>';
 					$html .= '<span class="state-marker"></span>';

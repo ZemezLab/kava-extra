@@ -421,7 +421,7 @@
 						.on( 'cx-control-init', this.selectRender.bind( this ) );
 				},
 
-				selectRender: function() {
+				selectRender: function( event ) {
 					var $target = ( event._target ) ? event._target : $( 'body' );
 
 					$( this.selectClass, $target ).each( this.select2Init.bind( this ) );
@@ -451,7 +451,7 @@
 						.on( 'cx-control-init', this.mediaRender.bind( this ) );
 				},
 
-				mediaRender: function() {
+				mediaRender: function( event ) {
 					var target   = ( event._target ) ? event._target : $( 'body' ),
 						$buttons = $( '.cx-upload-button', target );
 
