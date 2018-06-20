@@ -262,10 +262,12 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 		 */
 		public function kava_extra_get_interface_builder() {
 
+			$builder_data = kava_extra()->framework->get_included_module_data( 'cherry-x-interface-builder.php' );
+
 			return new CX_Interface_Builder(
 				array(
-					'path' => kava_extra()->plugin_path( 'framework/modules/interface-builder/' ),
-					'url'  => kava_extra()->plugin_url( 'framework/modules/interface-builder/' ),
+					'path' => $builder_data['path'],
+					'url'  => $builder_data['url'],
 				)
 			);
 		}
