@@ -3,7 +3,7 @@
  * Plugin Name: Kava Extra
  * Plugin URI:  https://zemez.io/
  * Description: Kava Theme extra plugin
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Zemez
  * Author URI:  https://zemez.io/
  * Text Domain: kava-extra
@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 *
 		 * @var string
 		 */
-		private $version = '1.0.0';
+		private $version = '1.0.1';
 
 		/**
 		 * Holder for base plugin URL
@@ -164,7 +164,23 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 * @return boolean
 		 */
 		public function is_kava_theme() {
-			return class_exists( 'Kava_Theme_Setup' );
+			$is_compatibility = false;
+
+			$theme_compatibility_list = apply_filters( 'kava-extra/theme-compatibility-list', array(
+				'Kava_Theme_Setup',
+				'Jeta_Theme_Setup',
+			) ) ;
+
+			if ( ! empty( $theme_compatibility_list ) ) {
+				foreach ( $theme_compatibility_list as $key => $theme ) {
+					if ( class_exists( $theme ) ) {
+						$is_compatibility = true;
+
+						break;
+					}
+				}
+			}
+			return $is_compatibility;
 		}
 
 		/**
