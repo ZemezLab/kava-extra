@@ -169,6 +169,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 			$theme_compatibility_list = apply_filters( 'kava-extra/theme-compatibility-list', array(
 				'Kava_Theme_Setup',
 				'Jeta_Theme_Setup',
+				'Mezo_Theme_Setup',
 			) ) ;
 
 			if ( ! empty( $theme_compatibility_list ) ) {
