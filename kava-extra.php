@@ -170,6 +170,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 				'Kava_Theme_Setup',
 				'Jeta_Theme_Setup',
 				'Mezo_Theme_Setup',
+				'Monstroid2_Theme_Setup',
 			) ) ;
 
 			if ( ! empty( $theme_compatibility_list ) ) {
