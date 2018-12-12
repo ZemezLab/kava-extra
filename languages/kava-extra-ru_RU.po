@@ -1,13 +1,12 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Kava Extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-12 10:12+0200\n"
-"PO-Revision-Date: 2018-01-03 12:10+0200\n"
+"PO-Revision-Date: 2018-12-12 10:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Zemez\n"
-"Language: en_US\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,221 +17,247 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.1.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: framework\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #: includes/post-meta.php:47
 msgid "Post Formats Settings"
-msgstr ""
+msgstr "Настройки формата поста"
 
 #: includes/post-meta.php:60
 msgid "Gallery"
-msgstr ""
+msgstr "Галерея"
 
 #: includes/post-meta.php:65
 msgid "Image Gallery"
-msgstr ""
+msgstr "Галерея изображений"
 
 #: includes/post-meta.php:66
 msgid ""
 "Choose image(s) for the gallery. This setting is used for your gallery post "
 "formats."
 msgstr ""
+"Выберите изображения для галереи. Данная опция исользуется для публикаций с "
+"форматом \"Галерея\"."
 
 #: includes/post-meta.php:68
 msgid "Set Gallery Images"
-msgstr ""
+msgstr "Выбрать изображенияд ля галереи"
 
 #: includes/post-meta.php:73
 msgid "Link"
-msgstr ""
+msgstr "Ссылка"
 
 #: includes/post-meta.php:78
 msgid "Link URL"
-msgstr ""
+msgstr "URL адрес ссылки"
 
 #: includes/post-meta.php:79
 msgid ""
 "Enter your external url. This setting is used for your link post formats."
 msgstr ""
+"Введите адрес внешней ссылки. Данная опция используется для публикаций с "
+"форматом \"Ссылка\"."
 
 #: includes/post-meta.php:84
 msgid "Link Target"
-msgstr ""
+msgstr "Атрибут Target"
 
 #: includes/post-meta.php:85
 msgid ""
 "Choose your target for the url. This setting is used for your link post "
 "formats."
 msgstr ""
+"Выберите атрибут Target для ссылки. Данная опция используется для публикаций "
+"с форматом \"Ссылка\"."
 
 #: includes/post-meta.php:95 includes/post-meta.php:100
 msgid "Quote"
-msgstr ""
+msgstr "Цитата"
 
 #: includes/post-meta.php:101
 msgid "Enter your quote. This setting is used for your quote post formats."
 msgstr ""
+"Введите цитату. Данная опция используется для публикаций с форматом \"Цитата"
+"\"."
 
 #: includes/post-meta.php:106
 msgid "Cite"
-msgstr ""
+msgstr "Источник"
 
 #: includes/post-meta.php:107
 msgid ""
 "Enter the quote source. This setting is used for your quote post formats."
 msgstr ""
+"Введите источник цитаты. Данная опция используется для публикаций с форматом "
+"\"Цитата\"."
 
 #: includes/post-meta.php:112 includes/post-meta.php:117
 msgid "Audio"
-msgstr ""
+msgstr "Аудио"
 
 #: includes/post-meta.php:118
 msgid ""
 "Add audio from the media library. This setting is used for your audio post "
 "formats."
 msgstr ""
+"Добавьте аудио из медиа библотеки. Данная опция используется для публикаций "
+"с форматом \"Аудио\"."
 
 #: includes/post-meta.php:121
 msgid "Set audio"
-msgstr ""
+msgstr "Установить аудио"
 
 #: includes/post-meta.php:126 includes/post-meta.php:215
 msgid "Loop"
-msgstr ""
+msgstr "Повторение"
 
 #: includes/post-meta.php:127 includes/post-meta.php:216
 msgid "Allows for the looping of media."
-msgstr ""
+msgstr "Позволяет бесконечно проигрывать медиафайл."
 
 #: includes/post-meta.php:133 includes/post-meta.php:222
 msgid "Autoplay"
-msgstr ""
+msgstr "Автовоспроизведение"
 
 #: includes/post-meta.php:134 includes/post-meta.php:223
 msgid ""
 "Causes the media to automatically play as soon as the media file is ready."
 msgstr ""
+"Включает автовоспроизведение как только медафайл готов к началу "
+"вопроизведения."
 
 #: includes/post-meta.php:140 includes/post-meta.php:232
 msgid "Preload"
-msgstr ""
+msgstr "Предзагрузка"
 
 #: includes/post-meta.php:141
 msgid "Specifies if and how the audio should be loaded when the page loads."
 msgstr ""
+"Указывает, будет ли аудиофайл подгружаться автоматически при загрузке "
+"страницы."
 
 #: includes/post-meta.php:147
 msgid "Video"
-msgstr ""
+msgstr "Видео"
 
 #: includes/post-meta.php:152
 msgid "Video Source Type"
-msgstr ""
+msgstr "Тип источника видео"
 
 #: includes/post-meta.php:153
 msgid ""
 "Choose video source type. This setting is used for your video post formats."
 msgstr ""
+"Выберите тип источника видео. Данная опция используется для публикаций с "
+"форматом \"Видео\"."
 
 #: includes/post-meta.php:157
 msgid "Media Library"
-msgstr ""
+msgstr "Медиа библиотека"
 
 #: includes/post-meta.php:160
 msgid "External Video"
-msgstr ""
+msgstr "Внешнее видео"
 
 #: includes/post-meta.php:167
 msgid "Library Video"
-msgstr ""
+msgstr "Видео библиотека"
 
 #: includes/post-meta.php:168
 msgid ""
 "Add video from the media library. This setting is used for your video post "
 "formats."
 msgstr ""
+"Добавить видео из медиа библиотеки. Данная опция используется для публикаций "
+"с форматом \"Видео\"."
 
 #: includes/post-meta.php:171
 msgid "Set Video"
-msgstr ""
+msgstr "Установить видео"
 
 #: includes/post-meta.php:179
 msgid "External Video URL"
-msgstr ""
+msgstr "Внешняя ссылка на видео"
 
 #: includes/post-meta.php:180
 msgid ""
 "Enter a URL that is compatible with WP built-in oEmbed feature. This setting "
 "is used for your video post formats."
 msgstr ""
+"Введите ссылку, формат которой совместим с встроенным  oEmbed для WordPress. "
+"Данная опция используется для публикаций с форматом \"Видео\"."
 
 #: includes/post-meta.php:188
 msgid "Video Poster"
-msgstr ""
+msgstr "Миниатюра для видео"
 
 #: includes/post-meta.php:189
 msgid "Defines image to show as placeholder before the media plays."
 msgstr ""
+"Определяет миниатюру для отображения в качестве плейсхолдера перед "
+"воспроизведением видео."
 
 #: includes/post-meta.php:192
 msgid "Set Poster"
-msgstr ""
+msgstr "Установить миниатюру"
 
 #: includes/post-meta.php:197
 msgid "Width"
-msgstr ""
+msgstr "Ширина"
 
 #: includes/post-meta.php:198
 msgid "Defines width of the media."
-msgstr ""
+msgstr "Определяет ширину медиа."
 
 #: includes/post-meta.php:206
 msgid "Height"
-msgstr ""
+msgstr "Высота"
 
 #: includes/post-meta.php:207
 msgid "Defines height of the media."
-msgstr ""
+msgstr "Определяет высоту медиа."
 
 #: includes/post-meta.php:233
 msgid "Specifies if and how the video should be loaded when the page loads."
 msgstr ""
+"Указывает будет ли видео прогружаться вместе со страницей при ее загрузке."
 
 #: includes/post-meta.php:241
 msgid "Page Settings"
-msgstr ""
+msgstr "Настройки страницы"
 
 #: includes/post-meta.php:250
 msgid "Use Breadcrumbs"
-msgstr ""
+msgstr "Использовать breadcrumbs"
 
 #: includes/post-meta.php:251
 msgid "Breadcrumbs enable global settings redefining."
-msgstr ""
+msgstr "Breadcrumbs переопределят глобальные настройки."
 
 #: includes/settings.php:110
 msgid "Settings saved"
-msgstr ""
+msgstr "Настройки сохранены"
 
 #: includes/settings.php:211 includes/settings.php:212
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: includes/settings.php:233
 msgid "Kava Theme Settings"
-msgstr ""
+msgstr "Настройки темы Kava"
 
 #: includes/settings.php:274
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: includes/settings.php:296
 msgid "Use nucleo-mini icon package"
-msgstr ""
+msgstr "Использовать сет иконок nucleo-mini "
 
 #: includes/settings.php:297
 msgid "Add nucleo-mini icon package to Elementor icon picker control"
-msgstr ""
+msgstr "Добавить сет иконок nucleo-mini в контрол иконок для Elementor "

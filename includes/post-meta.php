@@ -154,10 +154,10 @@ if ( ! class_exists( 'Kava_Extra_Post_Meta' ) ) {
 						'value'       => 'library',
 						'options' => array(
 							'library' => array(
-								'label' => 'Media Library',
+								'label' => esc_html__( 'Media Library', 'kava-extra' ),
 							),
 							'external' => array(
-								'label' => 'External Video',
+								'label' => esc_html__( 'External Video', 'kava-extra' ),
 							)
 						),
 					),

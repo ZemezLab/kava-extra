@@ -78,7 +78,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		public function __construct() {
 
 			// Internationalize the text strings used.
-			add_action( 'init', array( $this, 'lang' ), -10 );
+			add_action( 'plugins_loaded', array( $this, 'lang' ) );
 			// Load files.
 			add_action( 'init', array( $this, 'init' ), -10 );
 
