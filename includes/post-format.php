@@ -42,9 +42,13 @@ if ( ! class_exists( 'Kava_Extra_Post_Format' ) ) {
 				'status',
 			);
 
+			$template   = get_template();
+			$theme_obj  = wp_get_theme( $template );
+			$theme_slug = $theme_obj->get( 'TextDomain' );
+
 			// Register default post formats
 			foreach ( $post_formats as $format ) {
-				add_action( 'kava_extra_post_format_' . $format, array( $this, 'post_format_' . $format ) );
+				add_action( $theme_slug . '_extra_post_format_' . $format, array( $this, 'post_format_' . $format ) );
 			}
 		}
 
