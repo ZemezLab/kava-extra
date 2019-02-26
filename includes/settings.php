@@ -284,26 +284,83 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 		/**
 		 * Returns parent-independent controls list
 		 *
-		 * @return void
+		 * @return array
 		 */
 		public function get_controls_list( $parent = 'settings_top' ) {
 
-			return apply_filters( 'kava-extra/settings-page/controls-list',
-				array(
-					'nucleo-mini-package' => array(
-						'type'        => 'switcher',
-						'parent'      => $parent,
-						'title'       => esc_html__( 'Use nucleo-mini icon package', 'kava-extra' ),
-						'description' => esc_html__( 'Add nucleo-mini icon package to Elementor icon picker control', 'kava-extra' ),
-						'value'       => $this->get( 'nucleo-mini-package' ),
-						'toggle'      => array(
-							'true_toggle'  => 'On',
-							'false_toggle' => 'Off',
-						),
+			$controls = array(
+				'nucleo-mini-package' => array(
+					'type'        => 'switcher',
+					'parent'      => $parent,
+					'title'       => esc_html__( 'Use nucleo-mini icon package', 'kava-extra' ),
+					'description' => esc_html__( 'Add nucleo-mini icon package to Elementor icon picker control', 'kava-extra' ),
+					'value'       => $this->get( 'nucleo-mini-package' ),
+					'toggle'      => array(
+						'true_toggle'  => 'On',
+						'false_toggle' => 'Off',
 					),
-				)
+				),
+
+				'disable_content_container_archive_cpt' => array(
+					'type'        => 'checkbox',
+					'id'          => 'disable_content_container_archive_cpt',
+					'name'        => 'disable_content_container_archive_cpt',
+					'parent'      => $parent,
+					'value'       => $this->get( 'disable_content_container_archive_cpt' ),
+					'options'     => $this->get_post_types( true ),
+					'title'       => esc_html__( 'Disable Container of Content on Archive Pages', 'jet-elements' ),
+					'description' => esc_html__( 'List of CPT that will be a disabled container of content', 'jet-elements' ),
+					'class'       => 'kava_extra_settings_form__checkbox-group'
+				),
+
+				'disable_content_container_single_cpt' => array(
+					'type'        => 'checkbox',
+					'id'          => 'disable_content_container_single_cpt',
+					'name'        => 'disable_content_container_single_cpt',
+					'parent'      => $parent,
+					'value'       => $this->get( 'disable_content_container_single_cpt' ),
+					'options'     => $this->get_post_types(),
+					'title'       => esc_html__( 'Disable Container of Content on Singular Pages', 'jet-elements' ),
+					'description' => esc_html__( 'List of CPT that will be a disabled container of content', 'jet-elements' ),
+					'class'       => 'kava_extra_settings_form__checkbox-group'
+				),
 			);
 
+			return apply_filters( 'kava-extra/settings-page/controls-list', $controls );
+
+		}
+
+		/**
+		 * Get public post types options list
+		 *
+		 * @param  boolean $is_archive_list
+		 * @return array
+		 */
+		public function get_post_types( $is_archive_list = false ) {
+			$args = array(
+				'show_in_nav_menus' => true,
+			);
+
+			$post_types = get_post_types( $args, 'objects' );
+
+			$result = array();
+
+			if ( empty( $post_types ) ) {
+				return $result;
+			}
+
+			foreach ( $post_types as $slug => $post_type ) {
+				$result[ $slug ] = $post_type->label;
+			}
+
+			if ( $is_archive_list ) {
+				$result['search_results'] = esc_html__( 'Search Results', 'kava-extra' );
+				unset( $result['page'] );
+			} else {
+				$result['404_page'] = esc_html__( '404 Page', 'kava-extra' );
+			}
+
+			return $result;
 		}
 
 		/**

@@ -186,6 +186,16 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		}
 
 		/**
+		 * Get theme slug.
+		 */
+		public function get_theme_slug(){
+			$template   = get_template();
+			$theme_obj  = wp_get_theme( $template );
+
+			return $theme_obj->get( 'TextDomain' );
+		}
+
+		/**
 		 * Returns path to file or dir inside plugin folder
 		 *
 		 * @param  string $path Path inside plugin dir.

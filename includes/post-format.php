@@ -42,9 +42,7 @@ if ( ! class_exists( 'Kava_Extra_Post_Format' ) ) {
 				'status',
 			);
 
-			$template   = get_template();
-			$theme_obj  = wp_get_theme( $template );
-			$theme_slug = $theme_obj->get( 'TextDomain' );
+			$theme_slug = kava_extra()->get_theme_slug();
 
 			// Register default post formats
 			foreach ( $post_formats as $format ) {

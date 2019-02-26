@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kava Extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-12 10:12+0200\n"
+"POT-Creation-Date: 2019-02-26 14:26+0200\n"
 "PO-Revision-Date: 2018-01-03 12:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: Zemez\n"
@@ -229,10 +229,30 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: includes/settings.php:296
+#: includes/settings.php:295
 msgid "Use nucleo-mini icon package"
 msgstr ""
 
-#: includes/settings.php:297
+#: includes/settings.php:296
 msgid "Add nucleo-mini icon package to Elementor icon picker control"
+msgstr ""
+
+#: includes/settings.php:311
+msgid "Disable Container of Content on Archive Pages"
+msgstr ""
+
+#: includes/settings.php:312 includes/settings.php:324
+msgid "List of CPT that will be a disabled container of content"
+msgstr ""
+
+#: includes/settings.php:323
+msgid "Disable Container of Content on Singular Pages"
+msgstr ""
+
+#: includes/settings.php:357
+msgid "Search Results"
+msgstr ""
+
+#: includes/settings.php:360
+msgid "404 Page"
 msgstr ""

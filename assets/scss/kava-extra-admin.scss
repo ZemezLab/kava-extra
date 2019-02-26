@@ -10,20 +10,18 @@
 .kava_extra_settings_form {
 	&__checkbox-group {
 
-		.cherry-ui-container {
-			display: flex;
-			flex-flow: row wrap;
+		display: flex;
+		flex-flow: row wrap;
 
-			.cherry-checkbox-item-wrap {
-				width: 33.333%;
+		.cx-checkbox-item-wrap {
+			width: 33.333%;
 
-				@media screen and (max-width: 960px) {
-					width: 50%;
-				}
+			@media screen and (max-width: 960px) {
+				width: 50%;
+			}
 
-				@media screen and (max-width: 782px) {
-					width: 100%;
-				}
+			@media screen and (max-width: 782px) {
+				width: 100%;
 			}
 		}
 	}

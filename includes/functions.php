@@ -31,7 +31,10 @@ if ( ! class_exists( 'Kava_Extra_Functions' ) ) {
 		 * Constructor for the class
 		 */
 		public function init() {
-			add_filter( 'kava-theme/breadcrumbs/breadcrumbs-visibillity', array( $this, 'breadcrumbs_visibillity' ) );
+			$theme_slug = kava_extra()->get_theme_slug();
+
+			add_filter( $theme_slug . '-theme/breadcrumbs/breadcrumbs-visibillity', array( $this, 'breadcrumbs_visibillity' ) );
+			add_filter( $theme_slug . '-theme/site-content/container-enabled', array( $this, 'disable_site_content_container' ) );
 		}
 
 		/**
@@ -49,6 +52,45 @@ if ( ! class_exists( 'Kava_Extra_Functions' ) ) {
 			}
 
 			return $visibillity;
+		}
+
+		/**
+		 * Disable site content container
+		 *
+		 * @param  boolean $enabled
+		 * @return boolean
+		 */
+		public function disable_site_content_container( $enabled = true ) {
+			$disable_content_container_archive_cpt = kava_extra_settings()->get( 'disable_content_container_archive_cpt' );
+			$disable_content_container_single_cpt  = kava_extra_settings()->get( 'disable_content_container_single_cpt' );
+
+			$post_type = get_post_type();
+
+			if ( is_archive() && isset( $disable_content_container_archive_cpt[ $post_type ] )
+				&& filter_var( $disable_content_container_archive_cpt[ $post_type ], FILTER_VALIDATE_BOOLEAN )
+			) {
+				return false;
+			}
+
+			if ( is_search() && isset( $disable_content_container_archive_cpt['search_results'] )
+				&& filter_var( $disable_content_container_archive_cpt['search_results'], FILTER_VALIDATE_BOOLEAN )
+			) {
+				return false;
+			}
+
+			if ( is_singular() && isset( $disable_content_container_single_cpt[ $post_type ] )
+				&& filter_var( $disable_content_container_single_cpt[ $post_type ], FILTER_VALIDATE_BOOLEAN )
+			) {
+				return false;
+			}
+
+			if ( is_404() && isset( $disable_content_container_single_cpt['404_page'] )
+				&& filter_var( $disable_content_container_single_cpt['404_page'], FILTER_VALIDATE_BOOLEAN )
+			) {
+				return false;
+			}
+
+			return $enabled;
 		}
 
 		/**
