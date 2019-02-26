@@ -324,6 +324,16 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 					'description' => esc_html__( 'List of CPT that will be a disabled container of content', 'jet-elements' ),
 					'class'       => 'kava_extra_settings_form__checkbox-group'
 				),
+
+				'single_post_template' => array(
+					'type'    => 'select',
+					'id'      => 'single_post_template',
+					'name'    => 'single_post_template',
+					'parent'  => $parent,
+					'value'   => $this->get( 'single_post_template', 'default' ),
+					'options' => $this->get_single_post_templates(),
+					'title'   => esc_html__( 'Default Single Post Template', 'jet-elements' ),
+				),
 			);
 
 			return apply_filters( 'kava-extra/settings-page/controls-list', $controls );
@@ -361,6 +371,28 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 			}
 
 			return $result;
+		}
+
+		/**
+		 * Get single post templates.
+		 *
+		 * @return array
+		 */
+		public function get_single_post_templates() {
+			$default_template = array( 'default' => apply_filters( 'default_page_template_title', esc_html__( 'Default Template', 'kava-extra' ) ) );
+
+			$post_templates = get_page_templates( null, 'post' );
+
+			ksort( $post_templates );
+
+			$templates = array_combine(
+				array_values( $post_templates ),
+				array_keys( $post_templates )
+			);
+
+			$templates = array_merge( $default_template, $templates );
+
+			return $templates;
 		}
 
 		/**
