@@ -381,6 +381,10 @@ if ( ! class_exists( 'Kava_Extra_Settings' ) ) {
 		public function get_single_post_templates() {
 			$default_template = array( 'default' => apply_filters( 'default_page_template_title', esc_html__( 'Default Template', 'kava-extra' ) ) );
 
+			if ( ! function_exists( 'get_page_templates' ) ) {
+				return array();
+			}
+
 			$post_templates = get_page_templates( null, 'post' );
 
 			ksort( $post_templates );
