@@ -41,20 +41,14 @@ if ( ! class_exists( 'Kava_Extra_Elementor_Plugin_Ext' ) ) {
 			}
 		}
 
-		/**
-		 * [add_nucleo_icons_set description]
-		 */
 		public function add_nucleo_icons_set() {
 			add_action( 'elementor/controls/controls_registered', array( $this, 'nucleo_icons_to_icon_control' ), 20 );
-			add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'enqueue_icon_font' ) );
+			add_action( 'elementor/editor/before_enqueue_styles', array( $this, 'enqueue_icon_font' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon_font' ) );
+
+			add_filter( 'elementor/icons_manager/additional_tabs', array( $this, 'add_nucleo_icons_tab' ) );
 		}
 
-		/**
-		 * [kava_add_theme_icons_to_icon_control description]
-		 * @param  [type] $controls_manager [description]
-		 * @return [type]                   [description]
-		 */
 		public function nucleo_icons_to_icon_control( $controls_manager ) {
 			$default_icons = $controls_manager->get_control( 'icon' )->get_settings( 'options' );
 
@@ -109,6 +103,22 @@ if ( ! class_exists( 'Kava_Extra_Elementor_Plugin_Ext' ) ) {
 				array(),
 				'1.0.0'
 			);
+		}
+
+		public function add_nucleo_icons_tab( $tabs = array() ) {
+			$tabs['nc-icon-outline'] = array(
+				'name'          => 'nc-icon-outline',
+				'label'         => esc_html__( 'Nucleo Mini', 'kava-extra' ),
+				'labelIcon'     => 'nc-icon-outline design_path-minus',
+				'url'           => false,
+				'enqueue'       => false,
+				'prefix'        => '',
+				'displayPrefix' => 'nc-icon-outline',
+				'fetchJson'     => kava_extra()->plugin_url( 'assets/fonts/nucleo-outline-icon-font/nucleo-outline.json' ),
+				'ver'           => '1.0.0',
+			);
+
+			return $tabs;
 		}
 
 		/**
