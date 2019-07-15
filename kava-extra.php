@@ -3,7 +3,7 @@
  * Plugin Name: Kava Extra
  * Plugin URI:  https://zemez.io/
  * Description: Kava Theme extra plugin
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      Zemez
  * Author URI:  https://zemez.io/
  * Text Domain: kava-extra
@@ -39,7 +39,7 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 *
 		 * @var string
 		 */
-		private $version = '1.0.4';
+		private $version = '1.0.5';
 
 		/**
 		 * Holder for base plugin URL
