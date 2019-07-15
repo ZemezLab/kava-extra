@@ -110,8 +110,6 @@ if ( ! class_exists( 'Kava_Extra_Elementor_Plugin_Ext' ) ) {
 				'name'          => 'nc-icon-outline',
 				'label'         => esc_html__( 'Nucleo Mini', 'kava-extra' ),
 				'labelIcon'     => 'nc-icon-outline design_path-minus',
-				'url'           => false,
-				'enqueue'       => false,
 				'prefix'        => '',
 				'displayPrefix' => 'nc-icon-outline',
 				'fetchJson'     => kava_extra()->plugin_url( 'assets/fonts/nucleo-outline-icon-font/nucleo-outline.json' ),
