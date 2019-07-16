@@ -46,7 +46,7 @@ if ( ! class_exists( 'Kava_Extra_Elementor_Plugin_Ext' ) ) {
 			add_action( 'elementor/editor/before_enqueue_styles', array( $this, 'enqueue_icon_font' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon_font' ) );
 
-			//add_filter( 'elementor/icons_manager/additional_tabs', array( $this, 'add_nucleo_icons_tab' ) );
+			add_filter( 'elementor/icons_manager/additional_tabs', array( $this, 'add_nucleo_icons_tab' ) );
 		}
 
 		public function nucleo_icons_to_icon_control( $controls_manager ) {
