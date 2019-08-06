@@ -124,6 +124,10 @@ if ( ! class_exists( 'Kava_Extra' ) ) {
 		 */
 		public function framework_modules() {
 
+			if ( ! $this->is_kava_theme() ) {
+				return false;
+			}
+
 			require $this->plugin_path( 'includes/post-meta.php' );
 			require $this->plugin_path( 'includes/settings.php' );
 
